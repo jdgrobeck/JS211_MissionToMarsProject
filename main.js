@@ -10,11 +10,51 @@ const jobTypes = {
 };
 
 // Your code will go here
+// DONE  Build a class for CrewMember.
+// DONE Make sure CrewMembers can enter Ships.
+class CrewMember {
+  constructor(name, job, specialSkill, ship){
+    this.name = name;
+    this.job = job;
+    this.specialSkill = specialSkill;
+    this.ship = ship;
+  }
 
+  enterShip = (vessel) => {
+    // No way to get a ship yet because Ship class is incomplete
+    // We're really adding crew members and assigning them to a ship here
+    // Push crew member into the crew array on the ship
+    this.ship = vessel;
+    vessel.crew.push(this)
+    
 
+  }
 
+}
+// DONE Build a class for Ship.
+  // Should have name, type, ability and empty crew (don't have to pass)
+// DONE Make sure to return a mission statement.
+class Ship {
+  constructor (name, type, ability){
+    this.name = name;
+    this.type = type;
+    this.ability = ability;
+    this.crew = [];
+  }
 
+  missionStatement = () => {
+    // Mission statement = ability
+    
+    // Can't perform mission unless there's a crew
+    if (this.crew.length === 0) {
+      return "Can't perform a mission yet."
+    }
+    else {
+      return this.ability;
+    }
 
+  }
+}
 
 
 // Begin by reading the tests and building a function that will full each one.
@@ -57,6 +97,8 @@ if (typeof describe === 'function'){
       const crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
       let hermes = new Ship('Hermes', 'Main Ship', 'Interplanetary Space Travel');
       const crewMember2 = new CrewMember('Commander Lewis', 'commander', 'geology');
+
+      // at this point, I haven 2 ships and 2 crew members, but I haven't added any crew to this ships. Can't perform mission unless ship has crew members.
       assert.equal(mav.missionStatement(), "Can't perform a mission yet.");
       assert.equal(hermes.missionStatement(), "Can't perform a mission yet.");
 
